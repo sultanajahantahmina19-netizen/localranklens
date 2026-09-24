@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
@@ -142,30 +143,26 @@ export function AuditForm({
     formState: { errors },
   } = form;
 
-  const [locationId, setLocationId] = [watch("businessName"), setValue] as const;
-  void locationId;
-  const selectedLocation = watch("city");
-  void selectedLocation;
+  const [locationId, setLocationId] = useState<string | null>(null);
 
   const handleLocationPick = (value: string) => {
     if (value === "none") {
-      setValue("__locationId" as never, null as never);
+      setLocationId(null);
       return;
     }
     const location = locations.find((l) => l.id === value);
     if (!location) return;
+    setLocationId(location.id);
     setValue("businessName", location.business_name);
     setValue("primaryCategory", location.primary_category);
     setValue("city", location.city);
-    setValue("__locationId" as never, location.id as never);
   };
 
   return (
     <form
       className="space-y-6"
       onSubmit={handleSubmit(async (values) => {
-        const raw = values as AuditInputPayload & { __locationId?: string | null };
-        await onSubmit({ ...values, locationId: raw.__locationId ?? null });
+        await onSubmit({ ...values, locationId });
       })}
       noValidate
     >
