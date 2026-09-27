@@ -230,7 +230,3 @@ export function StatCard({
     </div>
   );
 }
-
-export function Button_(props: never) {
-  return <Button {...(props as object)} />;
-}
