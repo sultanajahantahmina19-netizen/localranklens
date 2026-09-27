@@ -17,7 +17,6 @@ import {
   X,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Logo } from "@/components/site/Logo";
 import { supabase } from "@/integrations/supabase/client";
@@ -229,8 +228,4 @@ export function StatCard({
       {hint ? <p className="mt-1 text-xs text-muted-foreground">{hint}</p> : null}
     </div>
   );
-}
-
-export function Button_(props: never) {
-  return <Button {...(props as object)} />;
 }
