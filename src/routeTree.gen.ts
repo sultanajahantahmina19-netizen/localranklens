@@ -27,6 +27,8 @@ import { Route as AuthenticatedBillingRouteImport } from './routes/_authenticate
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedLocationsRouteImport } from './routes/_authenticated/locations'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as AuthenticatedAuditNewRouteImport } from './routes/_authenticated/audit.new'
 import { Route as AuthenticatedAuditsIndexRouteImport } from './routes/_authenticated/audits.index'
 import { Route as AuthenticatedAuditsAuditIdRouteImport } from './routes/_authenticated/audits.$auditId'
@@ -120,6 +122,16 @@ const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAuditNewRoute = AuthenticatedAuditNewRouteImport.update({
   id: '/audit/new',
   path: '/audit/new',
@@ -156,6 +168,8 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/locations': typeof AuthenticatedLocationsRoute
   '/settings': typeof AuthenticatedSettingsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/guides/': typeof GuidesIndexRoute
   '/audit/new': typeof AuthenticatedAuditNewRoute
   '/audits/$auditId': typeof AuthenticatedAuditsAuditIdRoute
   '/audits/': typeof AuthenticatedAuditsIndexRoute
@@ -178,6 +192,8 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/locations': typeof AuthenticatedLocationsRoute
   '/settings': typeof AuthenticatedSettingsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/guides': typeof GuidesIndexRoute
   '/audit/new': typeof AuthenticatedAuditNewRoute
   '/audits/$auditId': typeof AuthenticatedAuditsAuditIdRoute
   '/audits': typeof AuthenticatedAuditsIndexRoute
@@ -202,6 +218,8 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/locations': typeof AuthenticatedLocationsRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/guides/$slug': typeof GuidesSlugRoute
+  '/guides/': typeof GuidesIndexRoute
   '/_authenticated/audit/new': typeof AuthenticatedAuditNewRoute
   '/_authenticated/audits/$auditId': typeof AuthenticatedAuditsAuditIdRoute
   '/_authenticated/audits/': typeof AuthenticatedAuditsIndexRoute
@@ -226,6 +244,8 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/locations'
     | '/settings'
+    | '/guides/$slug'
+    | '/guides/'
     | '/audit/new'
     | '/audits/$auditId'
     | '/audits/'
@@ -248,6 +268,8 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/locations'
     | '/settings'
+    | '/guides/$slug'
+    | '/guides'
     | '/audit/new'
     | '/audits/$auditId'
     | '/audits'
@@ -271,6 +293,8 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/_authenticated/locations'
     | '/_authenticated/settings'
+    | '/guides/$slug'
+    | '/guides/'
     | '/_authenticated/audit/new'
     | '/_authenticated/audits/$auditId'
     | '/_authenticated/audits/'
@@ -291,6 +315,8 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   SampleReportRoute: typeof SampleReportRoute
   TermsRoute: typeof TermsRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -421,6 +447,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/audit/new': {
       id: '/_authenticated/audit/new'
       path: '/audit/new'
@@ -483,6 +523,8 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   SampleReportRoute: SampleReportRoute,
   TermsRoute: TermsRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
