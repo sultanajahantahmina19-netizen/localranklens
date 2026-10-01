@@ -12,3 +12,14 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /dashboard
+Disallow: /audit/
+Disallow: /audits
+Disallow: /locations
+Disallow: /billing
+Disallow: /settings
+Disallow: /admin
+Disallow: /reset-password
+
+# Add once the production domain is live:
+# Sitemap: https://YOUR-DOMAIN/sitemap.xml

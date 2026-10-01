@@ -5,7 +5,7 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { auditInputSchema } from "@/lib/audit/schema";
 import { runAudit } from "@/lib/audit/engine";
 import type { AuditInput } from "@/lib/audit/types";
-import type { Database } from "@/integrations/supabase/types";
+import type { Database, Json } from "@/integrations/supabase/types";
 
 export type AuditRow = Database["public"]["Tables"]["audits"]["Row"];
 export type FindingRow = Database["public"]["Tables"]["audit_findings"]["Row"];
@@ -89,8 +89,8 @@ export const createAudit = createServerFn({ method: "POST" })
         city: input.city,
         overall_score: result.overallScore,
         grade: result.grade,
-        category_scores: result.categoryScores,
-        inputs: input,
+        category_scores: result.categoryScores as unknown as Json,
+        inputs: input as unknown as Json,
         engine_version: result.engineVersion,
       })
       .select("id")
