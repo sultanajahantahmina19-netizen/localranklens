@@ -16,9 +16,9 @@ const GROUPS = [
     title: "Learn",
     links: [
       { to: "/guides", label: "Local SEO guides" },
-      { to: "/guides/google-business-profile-audit-checklist", label: "How to audit a profile" },
-      { to: "/guides/google-business-profile-categories", label: "Choosing categories" },
-      { to: "/guides/how-to-ask-for-google-reviews", label: "Getting more reviews" },
+      { to: "/guides/$slug", slug: "google-business-profile-audit-checklist", label: "How to audit a profile" },
+      { to: "/guides/$slug", slug: "google-business-profile-categories", label: "Choosing categories" },
+      { to: "/guides/$slug", slug: "how-to-ask-for-google-reviews", label: "Getting more reviews" },
     ],
   },
   {
@@ -55,9 +55,11 @@ export function SiteFooter() {
             <h2 className="text-sm font-semibold text-foreground">{group.title}</h2>
             <ul className="mt-3 space-y-2">
               {group.links.map((link) => (
-                <li key={link.to}>
+                <li key={link.label}>
                   <Link
-                    to={link.to}
+                    {...("slug" in link
+                      ? { to: "/guides/$slug" as const, params: { slug: link.slug } }
+                      : { to: link.to })}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
