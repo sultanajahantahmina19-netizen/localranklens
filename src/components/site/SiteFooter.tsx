@@ -16,9 +16,9 @@ const GROUPS = [
     title: "Learn",
     links: [
       { to: "/guides", label: "Local SEO guides" },
-      { to: "/guides/google-business-profile-audit", label: "How to audit a profile" },
+      { to: "/guides/google-business-profile-audit-checklist", label: "How to audit a profile" },
       { to: "/guides/google-business-profile-categories", label: "Choosing categories" },
-      { to: "/guides/get-more-google-reviews", label: "Getting more reviews" },
+      { to: "/guides/how-to-ask-for-google-reviews", label: "Getting more reviews" },
     ],
   },
   {
@@ -27,7 +27,6 @@ const GROUPS = [
       { to: "/about", label: "About" },
       { to: "/contact", label: "Contact" },
       { to: "/business", label: "Business overview" },
-      { to: "/docs", label: "Documentation" },
     ],
   },
   {
