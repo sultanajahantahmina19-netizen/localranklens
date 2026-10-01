@@ -55,7 +55,7 @@ export function AppShell({
   children,
 }: {
   title: string;
-  description?: string;
+  description?: string | undefined;
   actions?: ReactNode;
   children: ReactNode;
 }) {
@@ -219,7 +219,7 @@ export function StatCard({
 }: {
   label: string;
   value: ReactNode;
-  hint?: string;
+  hint?: string | undefined;
 }) {
   return (
     <div className="rounded-xl border border-border bg-card p-5 shadow-panel">
