@@ -13,7 +13,7 @@ export const Route = createFileRoute("/features")({
       {
         name: "description",
         content:
-          "24 weighted checks across profile completeness, categories, reviews, photos, activity and citations — plus saved locations, printable reports and score history.",
+          "26 weighted checks across profile completeness, categories, reviews, photos, activity and citations — plus saved locations, printable reports and score history.",
       },
       { property: "og:title", content: "Features — LocalRankLens" },
       {

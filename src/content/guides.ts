@@ -81,7 +81,7 @@ export const GUIDES: Guide[] = [
       {
         heading: "Turn this into a scored checklist",
         paragraphs: [
-          "Running these checks by hand takes about an hour per profile and the result depends on who looked. A LocalRankLens audit applies the same 24 weighted checks every time and ranks the fixes by impact, so you start with the ones that actually move the needle.",
+          "Running these checks by hand takes about an hour per profile and the result depends on who looked. A LocalRankLens audit applies the same 26 weighted checks every time and ranks the fixes by impact, so you start with the ones that actually move the needle.",
         ],
       },
     ],
@@ -90,7 +90,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "google-business-profile-audit-checklist",
     title: "The Google Business Profile audit checklist",
-    metaTitle: "Google Business Profile audit checklist: 24 checks that matter",
+    metaTitle: "Google Business Profile audit checklist: 26 checks that matter",
     description:
       "A complete, weighted audit checklist for a Google Business Profile, grouped into profile completeness, categories, reviews, photos, activity and citations.",
     updated: "2026-01-01",

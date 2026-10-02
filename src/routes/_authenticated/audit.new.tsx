@@ -43,7 +43,7 @@ function NewAuditPage() {
   return (
     <AppShell
       title="New audit"
-      description="Record what you can see on the Google Business Profile — we score it against 24 ranking checks."
+      description="Record what you can see on the Google Business Profile — we score it against 26 ranking checks."
     >
       <div className="mx-auto max-w-4xl space-y-6">
         {usage.isLoading ? (

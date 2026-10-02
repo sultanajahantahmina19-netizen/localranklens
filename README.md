@@ -1,6 +1,6 @@
 # LocalRankLens
 
-Google Business Profile audit software. A user records what is visible on a profile; a deterministic engine scores it against 24 weighted checks across 6 categories and returns a 0–100 score, a grade and a fix list ranked by impact.
+Google Business Profile audit software. A user records what is visible on a profile; a deterministic engine scores it against 26 weighted checks across 6 categories and returns a 0–100 score, a grade and a fix list ranked by impact.
 
 ## Stack
 - React 19 + TanStack Start (SSR, file routes, typed server functions), TypeScript, Vite

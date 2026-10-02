@@ -14,7 +14,7 @@ export const Route = createFileRoute("/sample-report")({
       {
         name: "description",
         content:
-          "A complete example LocalRankLens report: overall score, category breakdown, prioritised actions and all 24 checks, generated from demo data.",
+          "A complete example LocalRankLens report: overall score, category breakdown, prioritised actions and all 26 checks, generated from demo data.",
       },
       { property: "og:title", content: "Sample Google Business Profile audit report" },
       {
