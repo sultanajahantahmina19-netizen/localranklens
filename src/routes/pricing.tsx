@@ -37,7 +37,7 @@ function PricingPage() {
       <PageHeader
         eyebrow="Pricing"
         title="Simple plans, enforced limits"
-        description="Every plan runs the same 24-check audit. Paid plans raise the monthly audit quota, saved locations and reporting options."
+        description="Every plan runs the same 26-check audit. Paid plans raise the monthly audit quota, saved locations and reporting options."
       />
 
       <section className="container-page py-14">

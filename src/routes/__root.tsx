@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  type ErrorComponentProps,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -42,7 +43,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -89,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Score any Google Business Profile against 24 local ranking checks and get a prioritised action list you can work through in an afternoon.",
+          "Score any Google Business Profile against 26 local ranking checks and get a prioritised action list you can work through in an afternoon.",
       },
       { property: "og:site_name", content: "LocalRankLens" },
       { property: "og:type", content: "website" },
@@ -115,7 +116,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
           description:
-            "Audit a Google Business Profile against 24 weighted local search checks and get a prioritised action list.",
+            "Audit a Google Business Profile against 26 weighted local search checks and get a prioritised action list.",
           offers: {
             "@type": "Offer",
             price: "0",

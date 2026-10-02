@@ -1,29 +1,38 @@
-# Welcome to your Lovable project
+# LocalRankLens
 
-This project was built with [Lovable](https://lovable.dev).
+Google Business Profile audit software. A user records what is visible on a profile; a deterministic engine scores it against 26 weighted checks across 6 categories and returns a 0–100 score, a grade and a fix list ranked by impact.
 
-## Build with Lovable
+## Stack
+- React 19 + TanStack Start (SSR, file routes, typed server functions), TypeScript, Vite
+- Tailwind CSS 4 (tokens in `src/styles.css`), shadcn/ui
+- PostgreSQL + Auth (email/password, Google) via Lovable Cloud / Supabase, row-level security on every table
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## Structure
+```
+src/
+  routes/            pages (public at top level, signed-in under _authenticated/, admin under _authenticated/admin*)
+  components/site    marketing header/footer/layout
+  components/app     signed-in layout, stat cards, empty states
+  components/audit   audit form and report view
+  lib/audit          scoring engine, schema, demo samples (pure TypeScript)
+  lib/api            server functions (audits, locations, profile, plans, contact, admin)
+  content/guides.ts  guide articles + content roadmap
+drizzle/migrations   database schema
+supabase/seed-demo.sql  optional demo rows (flagged is_demo)
 ```
 
-## Built with
+## Local setup
+1. `bun install`
+2. `cp .env.example .env` and fill in values (see below)
+3. Apply `drizzle/migrations/*.sql` to your database (SQL editor or `psql`)
+4. `bun run dev` → http://localhost:8080
+5. Sign up, open Settings → "Claim admin access" (works once, for the first admin only)
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Environment variables
+See `.env.example`. `VITE_*` values are public. `SUPABASE_SERVICE_ROLE_KEY` is server-only. `BILLING_MODE=live` disables self-serve plan switching once a payment provider is connected.
+
+## Deploy
+Covered in OWNER_GUIDE.md ("Deployment"). Production build: `bun run build`.
+
+## Security notes
+Passwords hashed by the auth provider; sessions are signed tokens; RLS on all tables; admin actions re-check the role on the server; all input validated with zod on client and server; contact form is rate limited; CSRF middleware in `src/start.ts`; no secrets in the repo.

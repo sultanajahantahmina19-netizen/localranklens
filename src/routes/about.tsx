@@ -34,7 +34,7 @@ function AboutPage() {
       <Prose>
         <h2>What LocalRankLens does</h2>
         <p>
-          LocalRankLens encodes a local search audit into 24 weighted checks across six categories.
+          LocalRankLens encodes a local search audit into 26 weighted checks across six categories.
           You record what is actually on the profile; the engine scores it the same way every time
           and returns a prioritised list of fixes with a recommendation for each one.
         </p>

@@ -15,13 +15,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Audit a Google Business Profile against 24 weighted local ranking checks, get a prioritised fix list, and track the score over time. Free plan, no card needed.",
+          "Audit a Google Business Profile against 26 weighted local ranking checks, get a prioritised fix list, and track the score over time. Free plan, no card needed.",
       },
       { property: "og:title", content: "LocalRankLens — Google Business Profile audits" },
       {
         property: "og:description",
         content:
-          "24 weighted local ranking checks, a clear score and a prioritised fix list you can hand to a client.",
+          "26 weighted local ranking checks, a clear score and a prioritised fix list you can hand to a client.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },

@@ -15,7 +15,7 @@ const FAQS = [
   },
   {
     q: "How is the score calculated?",
-    a: "24 checks are grouped into six categories and each carries a weight. A pass earns the full weight, a partial result earns 55%, a fail earns nothing. The total is normalised to 0–100 and mapped to a letter grade.",
+    a: "26 checks are grouped into six categories and each carries a weight. A pass earns the full weight, a partial result earns 55%, a fail earns nothing. The total is normalised to 0–100 and mapped to a letter grade.",
   },
   {
     q: "Will fixing everything guarantee a number one ranking?",
