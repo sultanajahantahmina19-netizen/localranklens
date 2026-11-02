@@ -300,6 +300,24 @@ export type Database = {
         }
         Relationships: []
       }
+      psi_cache: {
+        Row: {
+          cache_key: string
+          fetched_at: string
+          payload: Json
+        }
+        Insert: {
+          cache_key: string
+          fetched_at?: string
+          payload: Json
+        }
+        Update: {
+          cache_key?: string
+          fetched_at?: string
+          payload?: Json
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -317,6 +335,128 @@ export type Database = {
           created_at?: string
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      website_audit_findings: {
+        Row: {
+          audit_id: string
+          category: string
+          check_key: string
+          evidence: Json
+          explanation: string
+          fix_example: string | null
+          id: string
+          impact: string
+          label: string
+          manual_verification: boolean
+          observed: string
+          points_earned: number
+          priority: string
+          recommendation: string
+          sort_order: number
+          status: string
+          weight: number
+        }
+        Insert: {
+          audit_id: string
+          category: string
+          check_key: string
+          evidence?: Json
+          explanation?: string
+          fix_example?: string | null
+          id?: string
+          impact: string
+          label: string
+          manual_verification?: boolean
+          observed?: string
+          points_earned?: number
+          priority?: string
+          recommendation?: string
+          sort_order?: number
+          status: string
+          weight?: number
+        }
+        Update: {
+          audit_id?: string
+          category?: string
+          check_key?: string
+          evidence?: Json
+          explanation?: string
+          fix_example?: string | null
+          id?: string
+          impact?: string
+          label?: string
+          manual_verification?: boolean
+          observed?: string
+          points_earned?: number
+          priority?: string
+          recommendation?: string
+          sort_order?: number
+          status?: string
+          weight?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "website_audit_findings_audit_id_fkey"
+            columns: ["audit_id"]
+            isOneToOne: false
+            referencedRelation: "website_audits"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      website_audits: {
+        Row: {
+          audit_meta: Json
+          category_scores: Json
+          created_at: string
+          domain: string
+          engine_version: string
+          final_url: string | null
+          grade: string | null
+          id: string
+          is_demo: boolean
+          local_readiness: Json
+          overall_score: number | null
+          pagespeed: Json
+          status: Database["public"]["Enums"]["website_audit_status"]
+          url: string
+          user_id: string
+        }
+        Insert: {
+          audit_meta?: Json
+          category_scores?: Json
+          created_at?: string
+          domain: string
+          engine_version?: string
+          final_url?: string | null
+          grade?: string | null
+          id?: string
+          is_demo?: boolean
+          local_readiness?: Json
+          overall_score?: number | null
+          pagespeed?: Json
+          status?: Database["public"]["Enums"]["website_audit_status"]
+          url: string
+          user_id: string
+        }
+        Update: {
+          audit_meta?: Json
+          category_scores?: Json
+          created_at?: string
+          domain?: string
+          engine_version?: string
+          final_url?: string | null
+          grade?: string | null
+          id?: string
+          is_demo?: boolean
+          local_readiness?: Json
+          overall_score?: number | null
+          pagespeed?: Json
+          status?: Database["public"]["Enums"]["website_audit_status"]
+          url?: string
           user_id?: string
         }
         Relationships: []
@@ -340,6 +480,7 @@ export type Database = {
       check_status: "pass" | "warn" | "fail"
       message_status: "new" | "read" | "archived"
       plan_key: "free" | "pro" | "agency"
+      website_audit_status: "complete" | "failed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -471,6 +612,7 @@ export const Constants = {
       check_status: ["pass", "warn", "fail"],
       message_status: ["new", "read", "archived"],
       plan_key: ["free", "pro", "agency"],
+      website_audit_status: ["complete", "failed"],
     },
   },
 } as const
