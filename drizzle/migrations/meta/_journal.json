@@ -8,6 +8,13 @@
       "when": 1790191656599,
       "tag": "0000_localranklens_core_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793578463844,
+      "tag": "0001_website_audit_tables",
+      "breakpoints": true
     }
   ]
 }
